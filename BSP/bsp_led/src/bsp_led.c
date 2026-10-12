@@ -12,6 +12,8 @@
 
 #include "bsp_led.h"
 
+#include "stdio.h"
+#include "stm32f4xx_hal.h"
 //********************************************includes**********************//
 
  
@@ -20,4 +22,13 @@
 
 
 //********************************************Declaring*********************//
+void led_turn_on(void)
+{
+  HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);
+}
+
+void led_turn_off(void)
+{
+  HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
+}
 //********************************************Declaring*********************//

@@ -26,6 +26,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "bsp_key.h"
+#include "bsp_led.h"
+#include "queue.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,6 +63,8 @@ const osThreadAttr_t ledTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+
+QueueHandle_t key2led_queue = NULL;
 
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
@@ -116,7 +120,7 @@ void MX_FREERTOS_Init(void) {
 
   keyTaskHandle     = osThreadNew(keyTask         , NULL, &keyTask_attributes    );
 
-  //ledTaskHandle     = osThreadNew(ledTask         , NULL, &ledTask_attributes    );
+  ledTaskHandle     = osThreadNew(ledTask         , NULL, &ledTask_attributes    );
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -149,29 +153,88 @@ void StartDefaultTask(void *argument)
 void keyTask(void *argument)
 {
   /* USER CODE BEGIN keyTask */
-  key_state_t key_state;
+  key_state_t key_state = KEY_NOT_PRESSED;
+  BaseType_t  ret       = NULL           ;
+
+  key2led_queue = xQueueCreate(10,sizeof(key_state_t));
+  // if(NULL == key2led_queue)
+  // {
+  //   printf("create failed");
+  // }
+  // if(NULL != key2led_queue)
+  // {
+  //   printf("create successfully");
+  // }
   /* Infinite loop */
   for(;;)
   {
-    printf("key\n");
+    //printf("key\n");
 
     key_state = key_scan();
-    if(KEY_PRESSED == key_state)
-    {
-      printf("PRESSED\r\n");
-    }
-    if(KEY_NOT_PRESSED == key_state)
-    {
-      printf("NOT_PRESSED\r\n");
-    }
-    if(KEY_ERROR == key_state)
-    {
-      printf("ERROR\r\n");
-    }
+    // if(KEY_PRESSED == key_state)
+    // {
+    //   printf("PRESSED\r\n");
+    // }
+    // if(KEY_NOT_PRESSED == key_state)
+    // {
+    //   printf("NOT_PRESSED\r\n");
+    // }
+    // if(KEY_ERROR == key_state)
+    // {
+    //   printf("ERROR\r\n");
+    // }
 
-    osDelay(100);
+    ret = xQueueSend(key2led_queue,&key_state,0xFFFF);
+    // if(errQUEUE_FULL == ret)
+    // {
+    //   printf("send failed");
+    // }
+    // if(pdPASS == ret)
+    // {
+    //   printf("send successfully");
+    // }
+
+    osDelay(10);
   }
   /* USER CODE END keyTask */
+}
+
+void ledTask(void *argument)
+{
+  /* USER CODE BEGIN ledTask */
+  key_state_t key_state = KEY_NOT_PRESSED;
+  BaseType_t  ret       = NULL           ;
+
+  /* Infinite loop */
+  for(;;)
+  {
+    //printf("led\r\n");
+
+    if(NULL != key2led_queue)
+    {
+      ret = xQueueReceive(key2led_queue,&key_state,0xFFFF);
+      if(pdPASS == ret)
+      {
+        if(KEY_PRESSED == key_state)
+        {
+          led_turn_on();
+        }
+        if(KEY_NOT_PRESSED == key_state||KEY_ERROR == key_state)
+        {
+          led_turn_off();
+        }
+        //printf("key_state=%d\r\n",key_state);
+      }
+      if(errQUEUE_EMPTY == ret)
+      {
+        //printf("receive failed\r\n");
+      }
+      
+    }
+
+    osDelay(10);
+  }
+  /* USER CODE END ledTask */
 }
 
 /* Private application code --------------------------------------------------*/

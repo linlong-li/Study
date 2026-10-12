@@ -20,6 +20,7 @@ typedef enum
     KEY_NOT_PRESSED  = 0,
     KEY_PRESSED      = 1,
     KEY_ERROR        = 2,
+    
 }key_state_t;
 
 //********************************************Defines***********************//
