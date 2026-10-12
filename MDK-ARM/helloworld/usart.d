@@ -33,3 +33,12 @@ helloworld\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 helloworld\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 helloworld\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 helloworld\usart.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+helloworld\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+helloworld\usart.o: ../Core/Inc/FreeRTOSConfig.h
+helloworld\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+helloworld\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+helloworld\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+helloworld\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+helloworld\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+helloworld\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+helloworld\usart.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

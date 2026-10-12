@@ -20,6 +20,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+
 /* USER CODE BEGIN 0 */
 #include "stdio.h"
 
@@ -31,7 +34,10 @@
 
 PUTCHAR_PROTOTYPE
 {
+    vTaskSuspendAll();
     HAL_UART_Transmit(&huart1,(uint8_t*)&ch,1,HAL_MAX_DELAY);
+    xTaskResumeAll();
+
     return ch;
 }
 /* USER CODE END 0 */

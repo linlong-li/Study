@@ -21,17 +21,30 @@ Target DLL:      Segger\JL2CM3.dll V2.99.42.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-c:\Users\LLL\Desktop\homework\3.1_helloworld\MDK-ARM\helloworld.uvprojx
-Project File Date:  10/11/2026
+c:\Users\LLL\Desktop\homework\3.3_rtos_led\MDK-ARM\helloworld.uvprojx
+Project File Date:  10/12/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\keil\ARM\ARMCC\Bin'
 Build target 'helloworld'
+compiling bsp_led.c...
+../BSP/bsp_led/inc/bsp_led.h(21): warning:  #1-D: last line of file ends without a newline
+  //********************************************Declaring*********************//
+..\BSP\bsp_led\src\bsp_led.c(23): warning:  #1-D: last line of file ends without a newline
+  //********************************************Declaring*********************//
+..\BSP\bsp_led\src\bsp_led.c: 2 warnings, 0 errors
+compiling bsp_key.c...
+../BSP/bsp_key/inc/bsp_key.h(32): warning:  #1-D: last line of file ends without a newline
+  //********************************************Declaring*********************//
+..\BSP\bsp_key\src\bsp_key.c: 1 warning, 0 errors
 compiling freertos.c...
+../BSP/bsp_key/inc/bsp_key.h(32): warning:  #1-D: last line of file ends without a newline
+  //********************************************Declaring*********************//
+../Core/Src/freertos.c: 1 warning, 0 errors
 linking...
-Program Size: Code=10980 RO-data=512 RW-data=152 ZI-data=19808  
+Program Size: Code=11204 RO-data=556 RW-data=156 ZI-data=19812  
 FromELF: creating hex file...
-"helloworld\helloworld.axf" - 0 Error(s), 0 Warning(s).
+"helloworld\helloworld.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 

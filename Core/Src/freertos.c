@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bsp_key.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,6 +46,22 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 
+/* Definitions for keyTask */
+osThreadId_t keyTaskHandle;
+const osThreadAttr_t keyTask_attributes = {
+  .name = "keyTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+
+/* Definitions for ledTask */
+osThreadId_t ledTaskHandle;
+const osThreadAttr_t ledTask_attributes = {
+  .name = "ledTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -61,6 +77,10 @@ const osThreadAttr_t defaultTask_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
+
+void keyTask(void *argument);
+
+void ledTask(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -94,6 +114,10 @@ void MX_FREERTOS_Init(void) {
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
+  keyTaskHandle     = osThreadNew(keyTask         , NULL, &keyTask_attributes    );
+
+  //ledTaskHandle     = osThreadNew(ledTask         , NULL, &ledTask_attributes    );
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -117,10 +141,37 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    printf("helloworld");
-    osDelay(100);
+    osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
+}
+
+void keyTask(void *argument)
+{
+  /* USER CODE BEGIN keyTask */
+  key_state_t key_state;
+  /* Infinite loop */
+  for(;;)
+  {
+    printf("key\n");
+
+    key_state = key_scan();
+    if(KEY_PRESSED == key_state)
+    {
+      printf("PRESSED\r\n");
+    }
+    if(KEY_NOT_PRESSED == key_state)
+    {
+      printf("NOT_PRESSED\r\n");
+    }
+    if(KEY_ERROR == key_state)
+    {
+      printf("ERROR\r\n");
+    }
+
+    osDelay(100);
+  }
+  /* USER CODE END keyTask */
 }
 
 /* Private application code --------------------------------------------------*/
