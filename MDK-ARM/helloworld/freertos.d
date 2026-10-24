@@ -43,6 +43,4 @@ helloworld\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 helloworld\freertos.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 helloworld\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 helloworld\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
-helloworld\freertos.o: ../BSP/bsp_key/inc/bsp_key.h
-helloworld\freertos.o: ../BSP/bsp_led/inc/bsp_led.h
 helloworld\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h

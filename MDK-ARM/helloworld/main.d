@@ -45,3 +45,5 @@ helloworld\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 helloworld\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 helloworld\main.o: ../Core/Inc/usart.h
 helloworld\main.o: ../Core/Inc/gpio.h
+helloworld\main.o: ../BSP/bsp_key/inc/bsp_key.h
+helloworld\main.o: ../BSP/bsp_led/inc/bsp_led.h

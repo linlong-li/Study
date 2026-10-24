@@ -1,5 +1,18 @@
 helloworld\bsp_led.o: ..\BSP\bsp_led\src\bsp_led.c
 helloworld\bsp_led.o: ../BSP/bsp_led/inc/bsp_led.h
+helloworld\bsp_led.o: ../BSP/bsp_key/inc/bsp_key.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+helloworld\bsp_led.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+helloworld\bsp_led.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+helloworld\bsp_led.o: ../Core/Inc/FreeRTOSConfig.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+helloworld\bsp_led.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 helloworld\bsp_led.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
 helloworld\bsp_led.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 helloworld\bsp_led.o: ../Core/Inc/stm32f4xx_hal_conf.h
@@ -8,7 +21,6 @@ helloworld\bsp_led.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 helloworld\bsp_led.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 helloworld\bsp_led.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h
 helloworld\bsp_led.o: ../Drivers/CMSIS/Include/core_cm4.h
-helloworld\bsp_led.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 helloworld\bsp_led.o: ../Drivers/CMSIS/Include/cmsis_version.h
 helloworld\bsp_led.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 helloworld\bsp_led.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -16,7 +28,6 @@ helloworld\bsp_led.o: ../Drivers/CMSIS/Include/mpu_armv7.h
 helloworld\bsp_led.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
 helloworld\bsp_led.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 helloworld\bsp_led.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-helloworld\bsp_led.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
 helloworld\bsp_led.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
 helloworld\bsp_led.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
 helloworld\bsp_led.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
