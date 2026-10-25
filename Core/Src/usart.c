@@ -20,12 +20,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
 
-#include "FreeRTOS.h"
-#include "task.h"
-
 /* USER CODE BEGIN 0 */
 #include "stdio.h"
-
+#include "FreeRTOS.h"
+#include "task.h"
  #ifdef __GNUC__
       #define PUTCHAR_PROTOTYPE int _io_putchar(int ch)
  #else
