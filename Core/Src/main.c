@@ -24,7 +24,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bsp_key.h"
+#include "bsp_led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -76,6 +77,15 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+  if(0 == key_task_init())
+  {
+    while (1);
+  }
+
+  if(0 == led_task_init())
+  {
+    while (1);
+  }
 
   /* USER CODE END Init */
 
