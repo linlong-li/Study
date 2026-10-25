@@ -3,6 +3,7 @@
 "helloworld\main.o"
 "helloworld\gpio.o"
 "helloworld\freertos.o"
+"helloworld\tim.o"
 "helloworld\usart.o"
 "helloworld\stm32f4xx_it.o"
 "helloworld\stm32f4xx_hal_msp.o"
