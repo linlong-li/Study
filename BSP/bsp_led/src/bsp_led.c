@@ -21,8 +21,8 @@
 //********************************************includes**********************//
 
 //********************************************Defines***********************//
-extern QueueHandle_t key2led_queue;
 QueueHandle_t led_queue;
+static int toggle_times = 0;
 //********************************************Defines***********************//
 
 //********************************************Declaring*********************//
@@ -156,6 +156,35 @@ led_state_t led_get_operation(led_operation_t *led_opt)
 }
 
 /**
+ * @brief : 根据操作来得到led反转次数
+ *
+ * @param[in] : led_opt 用于接收 LED 操作
+ *
+ * @return : LED_OK 表示成功，LED_ERROR 表示失败
+ *
+ * */
+led_state_t led_get_operation_isr(led_operation_t *led_opt)
+{
+  BaseType_t ret;
+  ret = xQueueReceive(led_queue, led_opt, 0xffff);
+
+  if (LED_BLINK == *led_opt)
+  {
+    toggle_times = 20;
+  }
+  if (LED_TOGGLE == *led_opt)
+  {
+    toggle_times = 1;
+  }
+
+  if (pdTRUE == ret)
+  {
+    return LED_OK;
+  }
+  return LED_ERROR;
+}
+
+/**
  * @brief : 执行指定的 LED 操作
  *
  * @param[in] : led_opt 要执行的 LED 操作
@@ -184,6 +213,23 @@ void led_operation(led_operation_t led_opt)
 }
 
 /**
+ * @brief : 中断中执行指定的 LED 操作
+ *
+ * @param[in] : led_opt 要执行的 LED 操作
+ *
+ * @return : 无
+ *
+ * */
+void led_operation_isr(void)
+{
+  if (toggle_times > 0)
+  {
+    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+    toggle_times -= 1;
+  }
+}
+
+/**
  * @brief : LED 任务：循环读取队列中的操作并执行
  *
  * @param[in] : Parameters FreeRTOS 任务参数（未使用）
@@ -200,15 +246,12 @@ void ledTask(void *Parameters)
   /* Infinite loop */
   for (;;)
   {
-
-    ret = led_get_operation(&led_opt);
+    ret = led_get_operation_isr(&led_opt);
     if (LED_ERROR == ret)
     {
       while (1)
-      ;
-      
+        ;
     }
-    led_operation(led_opt);
 
     vTaskDelay(pdMS_TO_TICKS(50));
   }

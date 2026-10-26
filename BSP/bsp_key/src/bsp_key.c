@@ -163,16 +163,21 @@ void keyTask(void *Parameters)
 {
     /* USER CODE BEGIN keyTask */
     key_press_state_t key_state = KEY_NOT_PRESSED;
-
+    BaseType_t ret;
     /* Infinite loop */
     for (;;)
     {
         // key_state = key_scan();
-        key_state = key_scan_short_long(5000);
+        key_state = key_scan_short_long(500);
 
         printf("key sta %d\r\n", key_state);
 
-        xQueueSend(key2led_queue, &key_state, 0xffff);
+        ret = xQueueSend(key2led_queue, &key_state, 0xffff);
+        if (errQUEUE_FULL == ret)
+        {
+            while (1)
+                ;
+        }
 
         vTaskDelay(pdMS_TO_TICKS(50));
     }
