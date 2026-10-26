@@ -17,6 +17,7 @@
 #include "queue.h"
 #include "stdio.h"
 #include "stm32f4xx_hal.h"
+#include "main.h"
 
 //********************************************includes**********************//
 
@@ -44,7 +45,7 @@ int key_task_init(void)
         return 0;
     }
 
-    it2key_quque = xQueueCreate(5, sizeof(key_exti_ifo_t));
+    it2key_quque = xQueueCreate(5, sizeof(key_exti_ifo_t*));
     if (NULL == it2key_quque)
     {
         return 0;
@@ -90,27 +91,27 @@ key_press_state_t key_scan(void)
 key_press_state_t key_scan_short_long(int ms)
 {
     BaseType_t ret;
-    key_exti_ifo_t key_ifo;
+    key_exti_ifo_t *p_key_ifo;
 
     static float falling_time = 0;
     static float rising_time = 0;
 
-    ret = xQueueReceive(it2key_quque, &key_ifo, 0xffff);
+    ret = xQueueReceive(it2key_quque, &p_key_ifo, 0xffff);
     if (errQUEUE_EMPTY == ret)
     {
         while (1)
             ;
     }
 
-    if (FALLING_EDGE == key_ifo.key_edge)
+    if (FALLING_EDGE == p_key_ifo->key_edge)
     {
-        falling_time = key_ifo.time;
+        falling_time = p_key_ifo->time;
         // printf("fall at %f\r\n",falling_time);
     }
 
-    if (RISING_EDGE == key_ifo.key_edge)
+    if (RISING_EDGE == p_key_ifo->key_edge)
     {
-        rising_time = key_ifo.time;
+        rising_time = p_key_ifo->time;
         // printf("rise at %f\r\n",rising_time);
     }
 
@@ -194,8 +195,13 @@ void keyTask(void *Parameters)
  * */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-    key_exti_ifo_t key_ifo = {0};
+    HAL_GPIO_WritePin(TEST_GPIO_Port,TEST_Pin,GPIO_PIN_SET);
+
+    static key_exti_ifo_t key_ifo = {0};
+    key_exti_ifo_t *p_key_ifo = NULL;
+
     GPIO_InitTypeDef GPIO_InitStruct = {0};
+
     BaseType_t ret;
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     int index = 0;
@@ -225,7 +231,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
     }
 
-    ret = xQueueSendFromISR(it2key_quque, &key_ifo, &xHigherPriorityTaskWoken);
+    p_key_ifo = &key_ifo;
+
+    ret = xQueueSendFromISR(it2key_quque, &p_key_ifo, &xHigherPriorityTaskWoken);
     if (errQUEUE_FULL == ret)
     {
         while (1)
@@ -233,6 +241,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     }
 
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+
+    HAL_GPIO_WritePin(TEST_GPIO_Port,TEST_Pin,GPIO_PIN_RESET);
 }
 
 //********************************************Declaring*********************//
