@@ -43,3 +43,10 @@ helloworld\bsp_key.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 helloworld\bsp_key.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 helloworld\bsp_key.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 helloworld\bsp_key.o: ../Core/Inc/main.h
+helloworld\bsp_key.o: ..\Middlewares\RTT\SEGGER_RTT.h
+helloworld\bsp_key.o: ..\Middlewares\RTT\SEGGER_RTT_Conf.h
+helloworld\bsp_key.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+helloworld\bsp_key.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h
+helloworld\bsp_key.o: ..\Middlewares\easylogger\inc\elog.h
+helloworld\bsp_key.o: ..\Middlewares\easylogger\inc\elog_cfg.h
+helloworld\bsp_key.o: D:\keil\ARM\ARMCC\Bin\..\include\stdbool.h

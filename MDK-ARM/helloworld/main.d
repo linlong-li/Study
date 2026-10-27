@@ -48,3 +48,10 @@ helloworld\main.o: ../Core/Inc/usart.h
 helloworld\main.o: ../Core/Inc/gpio.h
 helloworld\main.o: ../BSP/bsp_key/inc/bsp_key.h
 helloworld\main.o: ../BSP/bsp_led/inc/bsp_led.h
+helloworld\main.o: ..\Middlewares\RTT\SEGGER_RTT.h
+helloworld\main.o: ..\Middlewares\RTT\SEGGER_RTT_Conf.h
+helloworld\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+helloworld\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h
+helloworld\main.o: ..\Middlewares\easylogger\inc\elog.h
+helloworld\main.o: ..\Middlewares\easylogger\inc\elog_cfg.h
+helloworld\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdbool.h

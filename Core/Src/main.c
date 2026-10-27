@@ -27,6 +27,8 @@
 /* USER CODE BEGIN Includes */
 #include "bsp_key.h"
 #include "bsp_led.h"
+#include "SEGGER_RTT.h"
+#include "elog.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -90,6 +92,20 @@ int main(void)
       ;
   }
 
+  // SEGGER_RTT_Init();
+
+  /* initialize EasyLogger */
+  elog_init();
+  /* set EasyLogger log format */
+  elog_set_fmt(ELOG_LVL_ASSERT, ELOG_FMT_FUNC | ELOG_FMT_LVL | ELOG_FMT_TAG | ELOG_FMT_TIME);
+  elog_set_fmt(ELOG_LVL_ERROR, ELOG_FMT_FUNC | ELOG_FMT_LVL | ELOG_FMT_TAG | ELOG_FMT_TIME);
+  elog_set_fmt(ELOG_LVL_WARN, ELOG_FMT_FUNC | ELOG_FMT_LVL | ELOG_FMT_TAG | ELOG_FMT_TIME);
+  elog_set_fmt(ELOG_LVL_INFO, ELOG_FMT_FUNC | ELOG_FMT_LVL | ELOG_FMT_TAG | ELOG_FMT_TIME);
+  elog_set_fmt(ELOG_LVL_DEBUG, ELOG_FMT_FUNC | ELOG_FMT_LVL | ELOG_FMT_TAG | ELOG_FMT_TIME);
+  elog_set_fmt(ELOG_LVL_VERBOSE, ELOG_FMT_FUNC | ELOG_FMT_LVL | ELOG_FMT_TAG | ELOG_FMT_TIME);
+
+  /* start EasyLogger */
+  elog_start();
   /* USER CODE END Init */
 
   /* Configure the system clock */

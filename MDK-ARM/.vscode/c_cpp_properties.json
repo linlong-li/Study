@@ -116,6 +116,8 @@
                 "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\BSP\\led\\inc",
                 "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\BSP\\bsp_key\\inc",
                 "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\BSP\\bsp_led\\inc",
+                "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\Middlewares\\RTT",
+                "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\Middlewares\\easylogger\\inc",
                 "D:\\keil\\ARM\\ARMCC\\include",
                 "D:\\keil\\ARM\\ARMCC\\include\\rw",
                 "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\MDK-ARM",
@@ -124,7 +126,9 @@
                 "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\Middlewares\\Third_Party\\FreeRTOS\\Source",
                 "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\Middlewares\\Third_Party\\FreeRTOS\\Source\\portable\\MemMang",
                 "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\BSP\\bsp_key\\src",
-                "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\BSP\\bsp_led\\src"
+                "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\BSP\\bsp_led\\src",
+                "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\Middlewares\\easylogger\\port",
+                "c:\\Users\\LLL\\Desktop\\homework\\5.3 log_output_ope\\Middlewares\\easylogger\\src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

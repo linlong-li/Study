@@ -1,0 +1,9 @@
+helloworld\elog.o: ..\Middlewares\easylogger\src\elog.c
+helloworld\elog.o: ..\Middlewares\easylogger\inc\elog.h
+helloworld\elog.o: ..\Middlewares\easylogger\inc\elog_cfg.h
+helloworld\elog.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+helloworld\elog.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+helloworld\elog.o: D:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+helloworld\elog.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+helloworld\elog.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h
+helloworld\elog.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h

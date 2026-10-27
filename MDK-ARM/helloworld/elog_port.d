@@ -1,0 +1,10 @@
+helloworld\elog_port.o: ..\Middlewares\easylogger\port\elog_port.c
+helloworld\elog_port.o: ..\Middlewares\easylogger\inc\elog.h
+helloworld\elog_port.o: ..\Middlewares\easylogger\inc\elog_cfg.h
+helloworld\elog_port.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+helloworld\elog_port.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+helloworld\elog_port.o: D:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+helloworld\elog_port.o: ..\Middlewares\RTT\SEGGER_RTT.h
+helloworld\elog_port.o: ..\Middlewares\RTT\SEGGER_RTT_Conf.h
+helloworld\elog_port.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+helloworld\elog_port.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h

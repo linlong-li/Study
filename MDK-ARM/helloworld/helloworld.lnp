@@ -37,6 +37,13 @@
 "helloworld\port.o"
 "helloworld\bsp_key.o"
 "helloworld\bsp_led.o"
+"helloworld\segger_rtt_printf.o"
+"helloworld\segger_rtt.o"
+"helloworld\elog_port.o"
+"helloworld\elog.o"
+"helloworld\elog_async.o"
+"helloworld\elog_buf.o"
+"helloworld\elog_utils.o"
 --library_type=microlib --strict --scatter "helloworld\helloworld.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
