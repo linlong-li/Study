@@ -1,5 +1,5 @@
 Load "helloworld\\helloworld.axf" 
-Set JLink Project File to "c:\Users\LLL\Desktop\homework\4.4 key_led_zero_copy_ope\MDK-ARM\JLinkSettings.ini"* JLink Info: Device "STM32F411CE" selected.
+Set JLink Project File to "c:\Users\LLL\Desktop\homework\5.3 log_output_ope\MDK-ARM\JLinkSettings.ini"* JLink Info: Device "STM32F411CE" selected.
 
 JLink info:
 ------------
@@ -43,4 +43,4 @@ Software-Breakpoints: 8192
 Watchpoints:          4
 JTAG speed: 4000 kHz
 
-Erase Done.Programming Done.Verify OK.Flash Load finished at 12:39:57
+Erase Done.Programming Done.Verify OK.Flash Load finished at 12:48:53
