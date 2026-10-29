@@ -36,13 +36,13 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-TaskHandle_t task_treada_t;
-TaskHandle_t task_treadb_t;
-
 void Task_TreadA(void *argument);
 void Task_TreadB(void *argument);
 
 #define BUFFER_SIZE 1
+#define ADC_ConvCplt 0x11
+#define BUFEER1_READY 0x01
+#define BUFEER2_READY 0x02
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -153,13 +153,13 @@ void StartDefaultTask(void *argument)
     printf("Buffer2 create failed\r\n");
   }
 
-  mailbox_it2A = xQueueCreate(1, sizeof(uint32_t));
+  mailbox_it2A = xQueueCreate(1, sizeof(uint32_t *));
   if (NULL == mailbox_it2A)
   {
     printf("Bmailbox_it2A create failed\r\n");
   }
 
-  mailbox_A2B = xQueueCreate(1, sizeof(uint32_t));
+  mailbox_A2B = xQueueCreate(1, sizeof(uint32_t *));
   if (NULL == mailbox_A2B)
   {
     printf("mailbox_A2B create failed\r\n");
@@ -183,10 +183,10 @@ void Task_TreadA(void *argument)
 {
   for (;;)
   {
-    uint32_t data = 0;
+    uint32_t info = 0;
     BaseType_t ret;
 
-    ret = xQueueReceive(mailbox_it2A, &data, portMAX_DELAY);
+    ret = xQueueReceive(mailbox_it2A, &info, portMAX_DELAY);
     if (pdPASS != ret)
     {
       printf("TaskA reciv from it failed");
@@ -198,7 +198,8 @@ void Task_TreadA(void *argument)
       index = 2;
       HAL_ADC_Start_DMA(&hadc1, Buffer2, BUFFER_SIZE);
 
-      ret = xQueueSend(mailbox_A2B, Buffer1, portMAX_DELAY);
+      uint32_t info = BUFEER1_READY;
+      ret = xQueueSend(mailbox_A2B, &info, portMAX_DELAY);
       if (pdPASS != ret)
       {
         printf("TaskA send to B failed\r\n");
@@ -210,7 +211,8 @@ void Task_TreadA(void *argument)
       index = 1;
       HAL_ADC_Start_DMA(&hadc1, Buffer1, BUFFER_SIZE);
 
-      ret = xQueueSend(mailbox_A2B, Buffer2, portMAX_DELAY);
+      uint32_t info = BUFEER2_READY;
+      ret = xQueueSend(mailbox_A2B, &info, portMAX_DELAY);
       if (pdPASS != ret)
       {
         printf("TaskA send to B failed\r\n");
@@ -223,12 +225,18 @@ void Task_TreadB(void *argument)
 {
   for (;;)
   {
-    uint32_t data;
-    float vol;
-    xQueueReceive(mailbox_A2B, &data, portMAX_DELAY);
+    uint32_t info;
+    xQueueReceive(mailbox_A2B, &info, portMAX_DELAY);
 
-    vol = data;
-    printf("vol:%f\r\n", vol/4095.f*3.3f);
+    if (BUFEER1_READY == info)
+    {
+      printf("buffer1 vol:%f\r\n", Buffer1[0] / 4095.f * 3.3f);
+    }
+    if (BUFEER2_READY == info)
+    {
+      printf("buffer2 vol:%f\r\n", Buffer2[0] / 4095.f * 3.3f);
+    }
+    
   }
 }
 
@@ -240,19 +248,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
             the HAL_ADC_ConvCpltCallback could be implemented in the user file
    */
   BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+  uint32_t info = ADC_ConvCplt;
 
-  if (1 == index)
-  {
-    /* Overwrite never fails: the queue always keeps the latest sample. */
-    //xQueueOverwriteFromISR(mailbox_it2A, Buffer1, &xHigherPriorityTaskWoken);
-    xQueueSendFromISR(mailbox_it2A, Buffer1, &xHigherPriorityTaskWoken);
-  }
-
-  if (2 == index)
-  {
-    //xQueueOverwriteFromISR(mailbox_it2A, Buffer2, &xHigherPriorityTaskWoken);
-    xQueueSendFromISR(mailbox_it2A, Buffer2, &xHigherPriorityTaskWoken);
-  }
+  xQueueSendFromISR(mailbox_it2A, &info, &xHigherPriorityTaskWoken);
 
   portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
