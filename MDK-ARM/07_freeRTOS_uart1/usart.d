@@ -24,6 +24,9 @@
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h
+07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h
+07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
@@ -33,3 +36,7 @@
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 07_freertos_uart1\usart.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+07_freertos_uart1\usart.o: ..\Middlewares\RTT\SEGGER_RTT.h
+07_freertos_uart1\usart.o: ..\Middlewares\RTT\SEGGER_RTT_Conf.h
+07_freertos_uart1\usart.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+07_freertos_uart1\usart.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h

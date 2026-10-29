@@ -19,10 +19,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
-
+#include "SEGGER_RTT.h"
 /* USER CODE BEGIN 0 */
 
-#include <stdio.h> //°üº¬Í·ÎÄ¼þ
+#include <stdio.h> //ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½
  
  #ifdef __GNUC__
      #define PUTCHAR_PROTOTYPE int _io_putchar(int ch)
@@ -37,11 +37,12 @@
  ******************************************************************/
  PUTCHAR_PROTOTYPE
  {
-     HAL_UART_Transmit(&huart1, (uint8_t *)&ch,1,0xFFFF);
-     return ch;
+    //  HAL_UART_Transmit(&huart1, (uint8_t *)&ch,1,0xFFFF);
+    SEGGER_RTT_PutChar (0, ch);
+    return ch;
  }
 
- /* USER CODE END 0 */
+/* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
 

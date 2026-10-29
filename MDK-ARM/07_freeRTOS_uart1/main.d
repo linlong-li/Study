@@ -23,6 +23,9 @@
 07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
 07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
 07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h
+07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h
+07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h
 07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 07_freertos_uart1\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
@@ -43,5 +46,11 @@
 07_freertos_uart1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 07_freertos_uart1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 07_freertos_uart1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+07_freertos_uart1\main.o: ../Core/Inc/adc.h
+07_freertos_uart1\main.o: ../Core/Inc/dma.h
 07_freertos_uart1\main.o: ../Core/Inc/usart.h
 07_freertos_uart1\main.o: ../Core/Inc/gpio.h
+07_freertos_uart1\main.o: ..\Middlewares\RTT\SEGGER_RTT.h
+07_freertos_uart1\main.o: ..\Middlewares\RTT\SEGGER_RTT_Conf.h
+07_freertos_uart1\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+07_freertos_uart1\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h
