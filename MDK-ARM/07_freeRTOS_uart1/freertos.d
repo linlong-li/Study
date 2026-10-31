@@ -48,3 +48,4 @@
 07_freertos_uart1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 07_freertos_uart1\freertos.o: ../Core/Inc/adc.h
 07_freertos_uart1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+07_freertos_uart1\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h

@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "adc.h"
 #include "queue.h"
+#include "semphr.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,6 +58,8 @@ uint32_t *Buffer2 = NULL;
 
 QueueHandle_t mailbox_it2A;
 QueueHandle_t mailbox_A2B;
+
+SemaphoreHandle_t mutex_buffer;
 
 int index = 0;
 /* USER CODE END Variables */
@@ -165,6 +168,12 @@ void StartDefaultTask(void *argument)
     printf("mailbox_A2B create failed\r\n");
   }
 
+  mutex_buffer = xSemaphoreCreateMutex();
+  if (NULL == mutex_buffer)
+  {
+    printf("mutex_buffer create failed\r\n");
+  }
+
   index = 1;
   HAL_ADC_Start_DMA(&hadc1, Buffer1, BUFFER_SIZE);
 
@@ -184,6 +193,7 @@ void Task_TreadA(void *argument)
   for (;;)
   {
     uint32_t info = 0;
+    uint32_t peek_info;
     BaseType_t ret;
 
     ret = xQueueReceive(mailbox_it2A, &info, portMAX_DELAY);
@@ -191,6 +201,14 @@ void Task_TreadA(void *argument)
     {
       printf("TaskA reciv from it failed");
     }
+
+    /* wait until Task B has taken the previous mailbox message */
+    while (pdTRUE == xQueuePeek(mailbox_A2B, &peek_info, 0))
+    {
+      osDelay(1);
+    }
+
+    xSemaphoreTake(mutex_buffer, portMAX_DELAY);
 
     if (1 == index)
     {
@@ -218,6 +236,8 @@ void Task_TreadA(void *argument)
         printf("TaskA send to B failed\r\n");
       }
     }
+
+    xSemaphoreGive(mutex_buffer);
   }
 }
 
@@ -226,7 +246,13 @@ void Task_TreadB(void *argument)
   for (;;)
   {
     uint32_t info;
-    xQueueReceive(mailbox_A2B, &info, portMAX_DELAY);
+
+    /* block here until a message arrives, but leave it in the queue */
+    xQueuePeek(mailbox_A2B, &info, portMAX_DELAY);
+
+    xSemaphoreTake(mutex_buffer, portMAX_DELAY);
+
+    xQueueReceive(mailbox_A2B, &info, 0);
 
     if (BUFEER1_READY == info)
     {
@@ -236,6 +262,8 @@ void Task_TreadB(void *argument)
     {
       printf("buffer2 vol:%f\r\n", Buffer2[0] / 4095.f * 3.3f);
     }
+
+    xSemaphoreGive(mutex_buffer);
     
   }
 }
