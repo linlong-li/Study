@@ -54,6 +54,20 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for Task_uart_recv_ */
+osThreadId_t Task_uart_recv_Handle;
+const osThreadAttr_t Task_uart_recv__attributes = {
+  .name = "Task_uart_recv_",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for Task_uart_driv */
+osThreadId_t Task_uart_drivHandle;
+const osThreadAttr_t Task_uart_driv_attributes = {
+  .name = "Task_uart_driv",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -61,6 +75,8 @@ const osThreadAttr_t defaultTask_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
+void uart_recv_A_func(void *argument);
+void uart_driv_func(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -93,6 +109,12 @@ void MX_FREERTOS_Init(void) {
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+  /* creation of Task_uart_recv_ */
+  Task_uart_recv_Handle = osThreadNew(uart_recv_A_func, NULL, &Task_uart_recv__attributes);
+
+  /* creation of Task_uart_driv */
+  Task_uart_drivHandle = osThreadNew(uart_driv_func, NULL, &Task_uart_driv_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
