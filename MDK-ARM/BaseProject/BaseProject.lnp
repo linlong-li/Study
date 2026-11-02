@@ -3,6 +3,7 @@
 "baseproject\main.o"
 "baseproject\gpio.o"
 "baseproject\freertos.o"
+"baseproject\dma.o"
 "baseproject\usart.o"
 "baseproject\stm32f4xx_it.o"
 "baseproject\stm32f4xx_hal_msp.o"

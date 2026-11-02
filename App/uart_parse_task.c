@@ -80,54 +80,59 @@ void uart_recv_A_func(void *argument)
             return;
         }
 
-        circular_buffer_status_t ret_read_circular_buffer;
-        uint8_t buffer = 0;
-        ret_read_circular_buffer = read_circular_buffer(p_circular_buffer, &buffer);
-        if (BUFFER_SUCCESS != ret_read_circular_buffer)
+        while (BUFFER_EMPTY != if_circular_buffer_empty(p_circular_buffer))
         {
-            log_w("ret_read_circular_buffer failed");
-            return;
-        }
-
-        switch (parse_state)
-        {
-        case 0:
-            if (FRAM_HEAD == buffer)
+            circular_buffer_status_t ret_read_circular_buffer;
+            uint8_t buffer = 0;
+            ret_read_circular_buffer = read_circular_buffer(p_circular_buffer, &buffer);
+            if (BUFFER_SUCCESS != ret_read_circular_buffer)
             {
-                parse_state = 1;
-                log_i("parse start");
+                log_w("ret_read_circular_buffer failed");
+                return;
             }
-            break;
 
-        case 1:
-            if (FRAM_END == buffer)
+            switch (parse_state)
             {
-                parse_state = 2;
-                log_i("parse end");
-
-                if (temp_buffer[0] == (temp_buffer[1] + temp_buffer[1]))
+            case 0:
+                if (FRAM_HEAD == buffer)
                 {
-                    log_i("parse successfully");
+                    parse_state = 1;
+                    log_i("parse start");
+                }
+                break;
+
+            case 1:
+                if (FRAM_END == buffer)
+                {
+                    parse_state = 2;
+                    log_i("parse end");
+
+                    if (temp_buffer[0] == (temp_buffer[1] + temp_buffer[1]))
+                    {
+                        log_i("parse successfully");
+                    }
+                    else
+                    {
+                        log_w("parse failed");
+                    }
+                    temp_buffer[0] = 0;
+                    temp_buffer[1] = 0;
+
+                    parse_state = 0;
                 }
                 else
                 {
-                    log_w("parse failed");
+                    temp_buffer[0] += buffer;
+                    temp_buffer[1] = buffer;
+                    log_i("data is %x",buffer);
                 }
-                temp_buffer[0] = 0;
-                temp_buffer[1] = 0;
+                break;
 
-                parse_state = 0;
+            default:
+                break;
             }
-            else
-            {
-                temp_buffer[0] += buffer;
-                temp_buffer[1] = buffer;
-            }
-            break;
-
-        default:
-            break;
         }
+
         // vTaskDelay(pdMS_TO_TICKS(10));
     }
     /* USER CODE END uart_recv_A_func */

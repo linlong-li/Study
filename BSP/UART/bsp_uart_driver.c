@@ -30,13 +30,14 @@
 extern QueueHandle_t queue_rec_A;
 extern UART_HandleTypeDef huart1;
 
-static int ringbuffer_len = 10;
-static uint8_t *ringbuffer = NULL;
+static int ringbuffer_len = 20;
+// static uint8_t *ringbuffer = NULL;
 static circular_buffer_t *circular_buffer = NULL;
+uint8_t *ringbuffer = NULL;
 
 QueueHandle_t queue_it2func;
 
-static uint8_t g_data = 0;
+#define RECV_MAX_LEN 20
 //******************************** Defines **********************************//
 
 //******************************** Declaring ********************************//
@@ -63,7 +64,9 @@ void uart_driv_func(void *argument)
     }
 
     circular_buffer_status_t ret_cb = BUFFER_FAILED;
-    ret_cb = cicular_buffer_init(circular_buffer, ringbuffer, ringbuffer_len);
+    ret_cb = cicular_buffer_init(circular_buffer,
+                                 ringbuffer,
+                                 ringbuffer_len);
     if (BUFFER_SUCCESS != ret_cb)
     {
         log_w("cicular_buffer_init failed");
@@ -76,10 +79,16 @@ void uart_driv_func(void *argument)
     }
 
     HAL_StatusTypeDef ret;
-    ret = HAL_UART_Receive_IT(&huart1, &g_data, 1);
+    // ret = HAL_UART_Receive_IT(&huart1, &g_data, 1);
+    // ret = HAL_UARTEx_ReceiveToIdle_DMA(&huart1,
+    //                                    circular_buffer->buffer,
+    //                                    RECV_MAX_LEN);
+    ret = HAL_UARTEx_ReceiveToIdle_DMA(&huart1,
+                                       circular_buffer->buffer,
+                                       RECV_MAX_LEN);
     if (HAL_OK != ret)
     {
-        log_w("HAL_UART_Receive_IT failed");
+        log_w("HAL_UART_Receive_DMA failed");
     }
     /* Infinite loop */
     for (;;)
@@ -88,37 +97,63 @@ void uart_driv_func(void *argument)
         xQueueReceive(queue_it2func, &recv, portMAX_DELAY);
 
         uint32_t send = 0;
-        xQueueGenericSend(queue_rec_A, &send,0,queueOVERWRITE);
+        xQueueGenericSend(queue_rec_A, &send, 0, queueOVERWRITE);
     }
     /* USER CODE END uart_driv_func */
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-    log_i("HAL_UART_RxCpltCallback");
+    uint32_t send = 0;
+    BaseType_t ret;
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
-    write_circular_buffer(circular_buffer, g_data);
-
-    HAL_StatusTypeDef ret;
-    ret = HAL_UART_Receive_IT(&huart1, &g_data, 1);
-    if (HAL_OK != ret)
+    if (RECV_MAX_LEN / 2 == Size)
     {
-        log_w("HAL_UART_Receive_IT failed");
+        circular_buffer->wr_index += (RECV_MAX_LEN / 2 - circular_buffer->wr_index % RECV_MAX_LEN);
+
+        ret = xQueueGenericSendFromISR(queue_rec_A, &send, &xHigherPriorityTaskWoken, queueOVERWRITE);
+        if (pdPASS != ret)
+        {
+            log_w("xQueueGenericSendFromISR failed");
+        }
+    }
+    else if (RECV_MAX_LEN == Size)
+    {
+        circular_buffer->wr_index += (RECV_MAX_LEN - circular_buffer->wr_index % RECV_MAX_LEN);
+
+        ret = xQueueGenericSendFromISR(queue_rec_A, &send, &xHigherPriorityTaskWoken, queueOVERWRITE);
+        if (pdPASS != ret)
+        {
+            log_w("xQueueGenericSendFromISR failed");
+        }
+    }
+    else
+    {
+        circular_buffer->wr_index += (Size - circular_buffer->wr_index % RECV_MAX_LEN);
+
+        ret = xQueueGenericSendFromISR(queue_rec_A, &send, &xHigherPriorityTaskWoken, queueOVERWRITE);
+        if (pdPASS != ret)
+        {
+            log_w("xQueueGenericSendFromISR failed");
+        }
     }
 
-    uint32_t send = 0;
-    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-    xQueueOverwriteFromISR(queue_it2func, &send, &xHigherPriorityTaskWoken);
+    if (circular_buffer->wr_index > circular_buffer->buffer_len)
+    {
+        circular_buffer->wr_index = circular_buffer->wr_index % circular_buffer->buffer_len;
+    }
+
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 circular_buffer_t *get_circular_buffer(void)
 {
-    if(circular_buffer == NULL)
+    if (circular_buffer == NULL)
     {
         return NULL;
     }
-    return circular_buffer;          // 没初始化就返回 NULL，由调用方判断
+    return circular_buffer; // 没初始化就返回 NULL，由调用方判断
 }
 
 //******************************** Declaring ********************************//
