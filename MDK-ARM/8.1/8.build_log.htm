@@ -21,16 +21,24 @@ Target DLL:      Segger\JL2CM3.dll V2.99.42.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-C:\Users\LLL\Desktop\homework\8.1 initial_bootloader_Arch_ope\8.1\MDK-ARM\8.1.uvprojx
+c:\Users\LLL\Desktop\homework\8.1 initial_bootloader_Arch_ope\8.1\MDK-ARM\8.1.uvprojx
 Project File Date:  11/03/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\keil\ARM\ARMCC\Bin'
 Build target '8.1'
+compiling main.c...
+../Core/Src/main.c(73): warning:  #223-D: function "printf" declared implicitly
+      printf("bootloader running\r\n");
+../Core/Src/main.c(69): warning:  #550-D: variable "armAddr"  was set but never used
+    uint32_t jumpAddr, armAddr;
+../Core/Src/main.c(49): warning:  #177-D: variable "JumpAddress"  was declared but never referenced
+  static uint32_t JumpAddress;
+../Core/Src/main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=3712 RO-data=464 RW-data=20 ZI-data=1092  
+Program Size: Code=3812 RO-data=464 RW-data=24 ZI-data=1096  
 FromELF: creating hex file...
-"8.1\8.1" - 0 Error(s), 0 Warning(s).
+"8.1\8.1" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
