@@ -1,0 +1,10 @@
+T3B68 000:008.117   SEGGER J-Link V6.98 Log File
+T3B68 000:008.256   DLL Compiled: Mar  2 2021 15:48:59
+T3B68 000:008.282   Logging started @ 2026-11-05 13:47
+T3B68 000:008.293 - 8.309ms
+T3B68 000:008.429 JLINK_SetWarnOutHandler(...)
+T3B68 000:008.556 - 0.144ms
+T3B68 000:008.605 JLINK_OpenEx(...)
+T3B68 000:011.930   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T3B68 000:013.000   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T3B68 000:013.149   Decompressing FW timestamp took 97 us
