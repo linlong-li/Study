@@ -66,9 +66,10 @@ uint8_t Flash_erase(u32 addr,u32 size)
 
     for(uint8_t i = 0; i <= 12; i++)
     {
-        if((Flash_Sectorsize[i]) >= flash_start_sector && (Flash_Sectorsize[i]) <= flash_end_sector)
+        if((Flash_Sectorsize[i] >= flash_start_sector) && (Flash_Sectorsize[i] <= flash_end_sector))
         {
-            if(EreaseAppSector(Flash_Sectorsize[i]) != FLASH_COMPLETE) return 1;
+            if(EreaseAppSector(Flash_Sectorsize[i]) != FLASH_COMPLETE) 
+							return 1;
         }
     }
     return 0;

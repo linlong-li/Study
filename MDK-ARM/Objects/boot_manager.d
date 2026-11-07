@@ -1,9 +1,9 @@
 .\objects\boot_manager.o: ..\Tasks\Boot_Manager\Boot_Manager.c
 .\objects\boot_manager.o: ..\Tasks\Boot_Manager\Boot_Manager.h
-.\objects\boot_manager.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\boot_manager.o: ..\Core\Inc\main.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Include\core_cm4.h
+.\objects\boot_manager.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Include\cmsis_version.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Include\cmsis_compiler.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Include\cmsis_armcc.h
@@ -31,3 +31,7 @@
 .\objects\boot_manager.o: ..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\objects\boot_manager.o: ..\Drivers\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\objects\boot_manager.o: ..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h
+.\objects\boot_manager.o: ..\Core\Inc\Flash.h
+.\objects\boot_manager.o: ..\Middlewares\AES\AES.h
+.\objects\boot_manager.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\boot_manager.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
