@@ -2,7 +2,7 @@
 .\objects\gpio.o: ..\Core\Inc\Gpio.h
 .\objects\gpio.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\gpio.o: ..\Drivers\CMSIS\Include\core_cm4.h
-.\objects\gpio.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gpio.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gpio.o: ..\Drivers\CMSIS\Include\cmsis_version.h
 .\objects\gpio.o: ..\Drivers\CMSIS\Include\cmsis_compiler.h
 .\objects\gpio.o: ..\Drivers\CMSIS\Include\cmsis_armcc.h

@@ -1,4 +1,4 @@
 .\objects\aes.o: ..\Middlewares\AES\AES.c
-.\objects\aes.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\aes.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\string.h
 .\objects\aes.o: ..\Middlewares\AES\aes.h
-.\objects\aes.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\aes.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h

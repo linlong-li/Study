@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F411xE</Define>
               <Undefine></Undefine>
-              <IncludePath>..\MDK-ARM;..\Core\Inc;..\Drivers\STM32F4xx_StdPeriph_Driver\inc;..\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\Drivers\CMSIS\Include;..\Middlewares\easylogger\inc;..\Tasks\Debug;..\Middlewares\Rtt;..\Tasks\Boot_Manager;..\Middlewares\Ymodem;..\Middlewares\AES</IncludePath>
+              <IncludePath>..\MDK-ARM;..\Core\Inc;..\Drivers\STM32F4xx_StdPeriph_Driver\inc;..\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\Drivers\CMSIS\Include;..\Middlewares\easylogger\inc;..\Tasks\Debug;..\Middlewares\Rtt;..\Tasks\Boot_Manager;..\Middlewares\Ymodem;..\Middlewares\AES;..\Bsp\W25Qxx</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -418,6 +418,11 @@
               <FileName>Flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\Flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>Spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\Spi.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1714,6 +1719,21 @@
               <FileName>AES.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Middlewares\AES\AES.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Bsp</GroupName>
+          <Files>
+            <File>
+              <FileName>w25qxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\W25Qxx\w25qxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>w25qxx_Handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\W25Qxx\w25qxx_Handler.c</FilePath>
             </File>
           </Files>
         </Group>

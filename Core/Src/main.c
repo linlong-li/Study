@@ -15,6 +15,8 @@
 #include "USART.h"
 #include "Flash.h"
 #include "Ymodem.h"
+#include "Spi.h"
+#include "w25qxx_Handler.h"
 // 全局定义 STM32F411xE 或者 STM32F401xx
 // 当前定义 STM32F411xE
 
@@ -73,6 +75,9 @@ int main(void)
 	USART1_Init();
 	app_elog_init();
   log_a("This is Bootloader!");
+
+  SPI1_Init();
+  W25Q64_Init();
 	//Ymodem_Receive(au8_test);
 	//JumpToApp();
   if(Key_Scan())

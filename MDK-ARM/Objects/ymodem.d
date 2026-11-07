@@ -1,9 +1,9 @@
 .\objects\ymodem.o: ..\Middlewares\Ymodem\ymodem.c
 .\objects\ymodem.o: ..\Middlewares\Ymodem\common.h
-.\objects\ymodem.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\ymodem.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ymodem.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\ymodem.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\string.h
 .\objects\ymodem.o: ..\Middlewares\Ymodem\ymodem.h
-.\objects\ymodem.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ymodem.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ymodem.o: ..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h
 .\objects\ymodem.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\ymodem.o: ..\Drivers\CMSIS\Include\core_cm4.h
@@ -37,3 +37,4 @@
 .\objects\ymodem.o: ..\Tasks\Boot_Manager\Boot_Manager.h
 .\objects\ymodem.o: ..\Core\Inc\main.h
 .\objects\ymodem.o: ..\Core\Inc\Flash.h
+.\objects\ymodem.o: ..\Bsp\W25Qxx\w25qxx_Handler.h

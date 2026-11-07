@@ -2,7 +2,7 @@
 .\objects\tim.o: ..\Core\Inc\tim.h
 .\objects\tim.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\tim.o: ..\Drivers\CMSIS\Include\core_cm4.h
-.\objects\tim.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tim.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tim.o: ..\Drivers\CMSIS\Include\cmsis_version.h
 .\objects\tim.o: ..\Drivers\CMSIS\Include\cmsis_compiler.h
 .\objects\tim.o: ..\Drivers\CMSIS\Include\cmsis_armcc.h

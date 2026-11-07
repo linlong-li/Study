@@ -2,7 +2,7 @@
 .\objects\main.o: ..\Core\Inc\main.h
 .\objects\main.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\main.o: ..\Drivers\CMSIS\Include\core_cm4.h
-.\objects\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: ..\Drivers\CMSIS\Include\cmsis_version.h
 .\objects\main.o: ..\Drivers\CMSIS\Include\cmsis_compiler.h
 .\objects\main.o: ..\Drivers\CMSIS\Include\cmsis_armcc.h
@@ -35,9 +35,11 @@
 .\objects\main.o: ..\Tasks\Debug\Debug.h
 .\objects\main.o: ..\Middlewares\easylogger\inc\elog.h
 .\objects\main.o: ..\Middlewares\easylogger\inc\elog_cfg.h
-.\objects\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
-.\objects\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\main.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: ..\Tasks\Boot_Manager\Boot_Manager.h
 .\objects\main.o: ..\Core\Inc\USART.h
 .\objects\main.o: ..\Core\Inc\Flash.h
 .\objects\main.o: ..\Middlewares\Ymodem\Ymodem.h
+.\objects\main.o: ..\Core\Inc\Spi.h
+.\objects\main.o: ..\Bsp\W25Qxx\w25qxx_Handler.h

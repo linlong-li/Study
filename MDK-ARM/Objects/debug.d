@@ -2,7 +2,7 @@
 .\objects\debug.o: ..\Tasks\Debug\Debug.h
 .\objects\debug.o: ..\Middlewares\easylogger\inc\elog.h
 .\objects\debug.o: ..\Middlewares\easylogger\inc\elog_cfg.h
-.\objects\debug.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\debug.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
-.\objects\debug.o: D:\keil\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\debug.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\debug.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\debug.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\debug.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\debug.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h

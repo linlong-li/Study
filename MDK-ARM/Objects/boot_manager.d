@@ -3,7 +3,7 @@
 .\objects\boot_manager.o: ..\Core\Inc\main.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Include\core_cm4.h
-.\objects\boot_manager.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\boot_manager.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Include\cmsis_version.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Include\cmsis_compiler.h
 .\objects\boot_manager.o: ..\Drivers\CMSIS\Include\cmsis_armcc.h
@@ -33,5 +33,12 @@
 .\objects\boot_manager.o: ..\Drivers\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h
 .\objects\boot_manager.o: ..\Core\Inc\Flash.h
 .\objects\boot_manager.o: ..\Middlewares\AES\AES.h
-.\objects\boot_manager.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\boot_manager.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\boot_manager.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\boot_manager.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\string.h
+.\objects\boot_manager.o: ..\Bsp\W25Qxx\w25qxx_Handler.h
+.\objects\boot_manager.o: ..\Bsp\W25Qxx\w25qxx.h
+.\objects\boot_manager.o: ..\Core\Inc\spi.h
+.\objects\boot_manager.o: ..\Middlewares\easylogger\inc\elog.h
+.\objects\boot_manager.o: ..\Middlewares\easylogger\inc\elog_cfg.h
+.\objects\boot_manager.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\boot_manager.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdbool.h

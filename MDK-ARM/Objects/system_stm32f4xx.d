@@ -1,7 +1,7 @@
 .\objects\system_stm32f4xx.o: ..\Core\Src\system_stm32f4xx.c
 .\objects\system_stm32f4xx.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\system_stm32f4xx.o: ..\Drivers\CMSIS\Include\core_cm4.h
-.\objects\system_stm32f4xx.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\system_stm32f4xx.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\system_stm32f4xx.o: ..\Drivers\CMSIS\Include\cmsis_version.h
 .\objects\system_stm32f4xx.o: ..\Drivers\CMSIS\Include\cmsis_compiler.h
 .\objects\system_stm32f4xx.o: ..\Drivers\CMSIS\Include\cmsis_armcc.h

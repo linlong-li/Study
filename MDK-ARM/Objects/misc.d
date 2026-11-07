@@ -2,7 +2,7 @@
 .\objects\misc.o: ..\Drivers\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\objects\misc.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\misc.o: ..\Drivers\CMSIS\Include\core_cm4.h
-.\objects\misc.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\misc.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\misc.o: ..\Drivers\CMSIS\Include\cmsis_version.h
 .\objects\misc.o: ..\Drivers\CMSIS\Include\cmsis_compiler.h
 .\objects\misc.o: ..\Drivers\CMSIS\Include\cmsis_armcc.h

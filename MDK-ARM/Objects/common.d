@@ -1,9 +1,9 @@
 .\objects\common.o: ..\Middlewares\Ymodem\common.c
 .\objects\common.o: ..\Middlewares\Ymodem\common.h
-.\objects\common.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\common.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\common.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\common.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\string.h
 .\objects\common.o: ..\Middlewares\Ymodem\ymodem.h
-.\objects\common.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\common.o: E:\ProgramFile\MDK\Core\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\common.o: ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\objects\common.o: ..\Drivers\CMSIS\Include\core_cm4.h
 .\objects\common.o: ..\Drivers\CMSIS\Include\cmsis_version.h
