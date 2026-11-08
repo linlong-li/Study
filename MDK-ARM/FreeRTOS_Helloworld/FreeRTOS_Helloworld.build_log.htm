@@ -21,16 +21,22 @@ Target DLL:      Segger\JL2CM3.dll V2.99.42.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-C:\Users\LLL\Desktop\homework\92initial_sct\MDK-ARM\FreeRTOS_Helloworld.uvprojx
+C:\Users\LLL\Desktop\homework\9.3initial_ozone\MDK-ARM\FreeRTOS_Helloworld.uvprojx
 Project File Date:  11/08/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\keil\ARM\ARMCC\Bin'
 Build target 'FreeRTOS_Helloworld'
+compiling freertos.c...
+../Core/Src/freertos.c(120): warning:  #550-D: variable "c"  was set but never used
+  	int a,b,c;
+../Core/Src/freertos.c(126): warning: C4018W: division by zero: /
+	c = b/a;
+../Core/Src/freertos.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=13916 RO-data=528 RW-data=152 ZI-data=19812  
+Program Size: Code=13304 RO-data=512 RW-data=152 ZI-data=19808  
 FromELF: creating hex file...
-".\FreeRTOS_Helloworld\FreeRTOS_Helloworld.axf" - 0 Error(s), 0 Warning(s).
+".\FreeRTOS_Helloworld\FreeRTOS_Helloworld.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,7 +60,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.6.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
