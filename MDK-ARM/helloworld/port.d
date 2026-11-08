@@ -1,0 +1,12 @@
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/port.c
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+helloworld\port.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+helloworld\port.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+helloworld\port.o: ../Core/Inc/FreeRTOSConfig.h
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+helloworld\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

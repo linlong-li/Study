@@ -1,0 +1,14 @@
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+helloworld\stream_buffer.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+helloworld\stream_buffer.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+helloworld\stream_buffer.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+helloworld\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+helloworld\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h
