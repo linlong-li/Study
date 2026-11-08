@@ -39,8 +39,11 @@
 "07_freertos_uart1\cmsis_os2.o"
 "07_freertos_uart1\heap_4.o"
 "07_freertos_uart1\port.o"
+"07_freertos_uart1\segger_sysview_freertos.o"
+"07_freertos_uart1\segger_sysview_config_freertos.o"
 "07_freertos_uart1\segger_rtt.o"
 "07_freertos_uart1\segger_rtt_printf.o"
+"07_freertos_uart1\segger_sysview.o"
 --library_type=microlib --strict --scatter "07_freeRTOS_uart1\07_freeRTOS_uart1.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

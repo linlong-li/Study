@@ -38,6 +38,14 @@
 07_freertos_uart1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
 07_freertos_uart1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 07_freertos_uart1\main.o: ../Core/Inc/FreeRTOSConfig.h
+07_freertos_uart1\main.o: ..\Middlewares\Third_Party\SystemView\FreeRTOSV10\SEGGER_SYSVIEW_FreeRTOS.h
+07_freertos_uart1\main.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW.h
+07_freertos_uart1\main.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER.h
+07_freertos_uart1\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h
+07_freertos_uart1\main.o: ..\Middlewares\Third_Party\SystemView\Config\Global.h
+07_freertos_uart1\main.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW_ConfDefaults.h
+07_freertos_uart1\main.o: ..\Middlewares\Third_Party\SystemView\Config\SEGGER_SYSVIEW_Conf.h
+07_freertos_uart1\main.o: ..\Middlewares\Third_Party\SystemView\Config\SEGGER_RTT_Conf.h
 07_freertos_uart1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 07_freertos_uart1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
 07_freertos_uart1\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
@@ -50,7 +58,5 @@
 07_freertos_uart1\main.o: ../Core/Inc/dma.h
 07_freertos_uart1\main.o: ../Core/Inc/usart.h
 07_freertos_uart1\main.o: ../Core/Inc/gpio.h
-07_freertos_uart1\main.o: ..\Middlewares\RTT\SEGGER_RTT.h
-07_freertos_uart1\main.o: ..\Middlewares\RTT\SEGGER_RTT_Conf.h
+07_freertos_uart1\main.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT.h
 07_freertos_uart1\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-07_freertos_uart1\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h

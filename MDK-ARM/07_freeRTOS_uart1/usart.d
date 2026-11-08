@@ -36,7 +36,7 @@
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 07_freertos_uart1\usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 07_freertos_uart1\usart.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
-07_freertos_uart1\usart.o: ..\Middlewares\RTT\SEGGER_RTT.h
-07_freertos_uart1\usart.o: ..\Middlewares\RTT\SEGGER_RTT_Conf.h
+07_freertos_uart1\usart.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT.h
+07_freertos_uart1\usart.o: ..\Middlewares\Third_Party\SystemView\Config\SEGGER_RTT_Conf.h
 07_freertos_uart1\usart.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 07_freertos_uart1\usart.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h

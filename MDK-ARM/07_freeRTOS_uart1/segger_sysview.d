@@ -1,0 +1,13 @@
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW.c
+07_freertos_uart1\segger_sysview.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+07_freertos_uart1\segger_sysview.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+07_freertos_uart1\segger_sysview.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW_Int.h
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW.h
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER.h
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\Config\Global.h
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW_ConfDefaults.h
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\Config\SEGGER_SYSVIEW_Conf.h
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\Config\SEGGER_RTT_Conf.h
+07_freertos_uart1\segger_sysview.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_RTT.h
+07_freertos_uart1\segger_sysview.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h

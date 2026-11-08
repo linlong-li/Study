@@ -5,6 +5,14 @@
 07_freertos_uart1\tasks.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
 07_freertos_uart1\tasks.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 07_freertos_uart1\tasks.o: ../Core/Inc/FreeRTOSConfig.h
+07_freertos_uart1\tasks.o: ..\Middlewares\Third_Party\SystemView\FreeRTOSV10\SEGGER_SYSVIEW_FreeRTOS.h
+07_freertos_uart1\tasks.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW.h
+07_freertos_uart1\tasks.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER.h
+07_freertos_uart1\tasks.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h
+07_freertos_uart1\tasks.o: ..\Middlewares\Third_Party\SystemView\Config\Global.h
+07_freertos_uart1\tasks.o: ..\Middlewares\Third_Party\SystemView\SEGGER\SEGGER_SYSVIEW_ConfDefaults.h
+07_freertos_uart1\tasks.o: ..\Middlewares\Third_Party\SystemView\Config\SEGGER_SYSVIEW_Conf.h
+07_freertos_uart1\tasks.o: ..\Middlewares\Third_Party\SystemView\Config\SEGGER_RTT_Conf.h
 07_freertos_uart1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 07_freertos_uart1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
 07_freertos_uart1\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h

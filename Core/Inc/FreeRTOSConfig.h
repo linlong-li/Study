@@ -27,7 +27,7 @@
  * 1 tab == 4 spaces!
  */
 /* USER CODE END Header */
-
+#include "SEGGER_SYSVIEW_FreeRTOS.h"
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
 
@@ -58,6 +58,9 @@
 
 #define configENABLE_FPU                         0
 #define configENABLE_MPU                         0
+
+#define INCLIDE_xTaskGetIdleTaskHandle 1
+#define INCLUDE_pxTaskGetStackStart   1
 
 #define configUSE_PREEMPTION                     1
 #define configSUPPORT_STATIC_ALLOCATION          1

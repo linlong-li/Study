@@ -24,7 +24,7 @@
 #include "usart.h"
 #include "gpio.h"
 #include "SEGGER_RTT.h"
-
+#include "SEGGER_SYSVIEW.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -84,7 +84,7 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
-
+	SEGGER_SYSVIEW_Conf();
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
