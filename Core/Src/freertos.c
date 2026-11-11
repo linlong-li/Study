@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bsp_led_driver.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,7 +35,41 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+led_status_t get_time_ms(void)
+{
+    //TBD:1.option - use mutex to protect the critical section
+    //TBD:2.option - use mutex to protect the critical section
+    return LED_OK;
+}
+led_get_time_ms_t led_get_time_ms = {
+    .pf_led_get_time_ms = get_time_ms
+};
 
+led_status_t led_on(void)
+{
+    printf("led_on\r\n");
+    return LED_OK;
+}
+
+led_status_t led_off(void)
+{
+    printf("led_off\r\n");
+    return LED_OK;
+}
+
+led_operation_t led_operation = {
+    .pf_led_on  = led_on,
+    .pf_led_off = led_off
+};
+
+led_status_t os_delay(const uint32_t ms)
+{
+    osDelay(ms);
+    return LED_OK;
+}
+led_os_delay_t led_os_delay = {
+    .pf_led_os_delay = os_delay
+};
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -114,11 +148,15 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
+  led_driver_t led1;
+  led_driver_inst(&led1, &led_get_time_ms, &led_operation, &led_os_delay);
   /* Infinite loop */
   for(;;)
   {
-    printf("helloworld");
-    osDelay(100);
+    printf("helloworld/r/n");
+
+    led1.led_control(&led1, 10, 5, PROPORTIONN_1_1);
+    osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */
 }
