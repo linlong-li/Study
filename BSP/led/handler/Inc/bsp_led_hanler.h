@@ -160,7 +160,11 @@ typedef struct
 }led_handler_instance_t;
 
 /* External */
-typedef led_handler_status_t (*pf_led_control)(led_handler_t *const self);  
+typedef led_handler_status_t (*pf_led_control)(led_handler_t *const self,
+                                               led_index_t led_index,    
+                                               uint8_t led_cycle_time,
+                                                uint8_t led_blink_count,
+                                                proportion_t led_proportion);  
                                                    /* LED control interface. */
 /*********************************Interface***********************************/
 
@@ -213,6 +217,19 @@ led_handler_status_t led_handler_inst(led_handler_t     *const self,
 #endif
                                       led_get_time_ms_t *const led_get_time_ms
                                       );          /* LED handler  interface. */
+
+/**
+ * @brief : led_register
+ *  
+ * @param[in] : 
+ * 
+ * @return : 
+ * 
+ * */
+led_handler_status_t led_register(led_handler_t *const led_handler, 
+                                  led_driver_t  *const led_driver,
+                                  led_index_t*           led_index
+                                  );          /* LED register interface. */
 //******************************** Declaring ********************************//
 
 #endif // End of __BSP_LED_HANLER_H__

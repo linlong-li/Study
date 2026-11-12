@@ -40,6 +40,23 @@
 #define TEST_LED
 
 #ifdef TEST_LED
+led_status_t led_on(void)
+{
+    printf("LED ON\r\n");
+    return LED_OK;
+}
+
+led_status_t led_off(void)
+{
+    printf("LED OFF\r\n");
+    return LED_OK;
+}
+
+led_operation_t led_operation = {
+    .pf_led_on  = led_on,
+    .pf_led_off = led_off
+};
+
 led_handler_status_t led_get_time(void)
 {
     HAL_GetTick();
@@ -213,12 +230,63 @@ led_os_queue_t led_os_queue = {
 void test()
 {
   static led_handler_t led_handler;
+  static led_driver_t led1;
+  static led_driver_t led2;
+  static led_index_t led1_index;
+  static led_index_t led2_index;
+
   led_handler_status_t ret = led_handler_inst(&led_handler,   
                                               &led_os_delay_ms,
                                               &led_os_thread,
                                               &led_os_queue,
                                               NULL,
                                               &led_get_time_ms);
+
+    if (ret != LED_HANDLER_OK)
+    {
+        printf("led_handler_inst failed with error code: %d\r\n", ret);
+        return;
+    }
+
+    led_status_t ret1 = LED_OK;
+    ret1 = led_driver_inst(&led1,&led_operation);
+    if (ret1 != LED_HANDLER_OK)  
+    {
+            printf("led_driver_inst for led1 failed with error code: %d\r\n", ret1);
+            return;
+    }
+
+    led_status_t ret2 = LED_OK;
+    ret2 = led_driver_inst(&led2,&led_operation);
+    if (ret2 != LED_HANDLER_OK)
+    {
+            printf("led_driver_inst for led2 failed with error code: %d\r\n", ret2);
+            return;
+    }
+
+    ret = led_register(&led_handler, &led1, &led1_index);
+    if (ret != LED_HANDLER_OK)
+    {
+        printf("led_register failed with error code: %d\r\n", ret);
+        return;
+    }
+
+    ret = led_register(&led_handler, &led2, &led2_index);
+    if (ret != LED_HANDLER_OK)
+    {
+        printf("led_register failed with error code: %d\r\n", ret);
+        return;
+    }
+
+    led_handler_status_t ret3;
+    ret3 = led_handler.led_control(&led_handler,led1_index,10,5,PROPORTIONN_1_1);
+    if(LED_HANDLER_OK != ret3)
+    {
+        printf("led_control failed with error code: %d\r\n", ret);
+        return;
+    }
+
+    ret3 = led_handler.led_control(&led_handler,led2_index,5,5,PROPORTIONN_1_1);
 }
 #endif
 
