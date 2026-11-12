@@ -1,2 +1,13 @@
 helloworld\bsp_led_hanler.o: ..\BSP\led\handler\Src\bsp_led_hanler.c
 helloworld\bsp_led_hanler.o: ..\BSP\led\handler\Inc\bsp_led_hanler.h
+helloworld\bsp_led_hanler.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+helloworld\bsp_led_hanler.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+helloworld\bsp_led_hanler.o: ..\BSP\led\driver\Inc\bsp_led_driver.h
+helloworld\bsp_led_hanler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/freertos.h
+helloworld\bsp_led_hanler.o: D:\keil\ARM\ARMCC\Bin\..\include\stddef.h
+helloworld\bsp_led_hanler.o: ../Core/Inc/FreeRTOSConfig.h
+helloworld\bsp_led_hanler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+helloworld\bsp_led_hanler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+helloworld\bsp_led_hanler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+helloworld\bsp_led_hanler.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+helloworld\bsp_led_hanler.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h

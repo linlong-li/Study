@@ -65,30 +65,9 @@ typedef struct led_driver led_driver_t;             /* LED driver structure. */
 /* Internal */
 typedef struct
 {
-    led_status_t (*pf_led_get_time_ms)(void);  
-}led_get_time_ms_t;                 /* Get the current time in milliseconds. */
-
-typedef struct
-{
     led_status_t (*pf_led_on)(void);  
     led_status_t (*pf_led_off)(void);
 }led_operation_t;                                /* LED operation interface. */
-
-
-#ifdef OS_SUPPORT
-typedef struct
-{
-    led_status_t (*pf_led_os_delay)(const uint32_t ms);
-}led_os_delay_t;                                  /* LED OS delay interface. */
-#endif
-
-/* External */
-typedef led_status_t (*pf_led_control)(led_driver_t *const self,
-                                       const uint8_t       cycle_time,
-                                       const uint8_t       blink_count, 
-                                       const proportion_t  proportion);  
-                                                   /* LED control interface. */
-
 /*********************************Interface***********************************/
 
 struct led_driver
@@ -103,14 +82,11 @@ struct led_driver
 
     /*********************************Interface*******************************/
     /* Internal */
-    led_get_time_ms_t *led_get_time_ms;       /* Get the current time in ms. */
+   
     led_operation_t   *led_operation;         /* LED operation interface.    */
-#ifdef OS_SUPPORT    
-    led_os_delay_t    *led_os_delay;          /* LED OS delay interface.     */
-#endif
 
     /* External */
-    pf_led_control    led_control;            /* LED control interface.      */
+
     /*********************************Interface*******************************/
 };
 
@@ -127,11 +103,7 @@ struct led_driver
  * 
  * */
 led_status_t led_driver_inst(led_driver_t      *const self, 
-                             led_get_time_ms_t *const led_get_time_ms,
-                             led_operation_t   *const led_operation,
-#ifdef OS_SUPPORT
-                             led_os_delay_t    *const led_os_delay
-#endif                       
+                             led_operation_t   *const led_operation             
                             );                   /* LED instance interface. */
 //******************************** Declaring ********************************//
 

@@ -22,10 +22,12 @@
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
+#include "queue.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "bsp_led_driver.h"
+#include "bsp_led_hanler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,41 +37,191 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-led_status_t get_time_ms(void)
+#define TEST_LED
+
+#ifdef TEST_LED
+led_handler_status_t led_get_time(void)
 {
-    //TBD:1.option - use mutex to protect the critical section
-    //TBD:2.option - use mutex to protect the critical section
-    return LED_OK;
+    HAL_GetTick();
+    return LED_HANDLER_OK;
 }
+
 led_get_time_ms_t led_get_time_ms = {
-    .pf_led_get_time_ms = get_time_ms
+    .pf_led_get_time_ms = led_get_time
 };
 
-led_status_t led_on(void)
+led_handler_status_t led_os_delay(const uint32_t ms)
 {
-    printf("led_on\r\n");
-    return LED_OK;
+    vTaskDelay(pdMS_TO_TICKS(ms));
+    return LED_HANDLER_OK;
 }
 
-led_status_t led_off(void)
-{
-    printf("led_off\r\n");
-    return LED_OK;
-}
-
-led_operation_t led_operation = {
-    .pf_led_on  = led_on,
-    .pf_led_off = led_off
+led_os_delay_t led_os_delay_ms = {
+    .pf_led_os_delay = led_os_delay
 };
 
-led_status_t os_delay(const uint32_t ms)
+led_handler_status_t led_os_thread_create(void * const task_code,
+                    const char * const task_name,
+                    const uint32_t stack_depth,
+                    void * const parameters,
+                    uint32_t priority,
+                    void ** const task_handler)
 {
-    osDelay(ms);
-    return LED_OK;
+    /*Check parameters*/
+    if (task_code == NULL || task_name == NULL || 
+        task_handler == NULL|| stack_depth <= 0 )
+    {
+        return LED_HANDLER_ERRORPARAMETER;
+    }
+
+    BaseType_t ret = xTaskCreate((TaskFunction_t)task_code, 
+                                        task_name, 
+                                        stack_depth , 
+                                        parameters, 
+                                        priority, 
+                                        (TaskHandle_t *)task_handler);
+
+    if (ret == pdPASS)
+    {
+        return LED_HANDLER_OK;
+    }
+    else
+    {
+        return LED_HANDLER_ERROR;
+    }
+
 }
-led_os_delay_t led_os_delay = {
-    .pf_led_os_delay = os_delay
+
+led_create_thread_t led_os_thread_create_t = {
+    .pf_led_create_thread = &led_os_thread_create
 };
+
+led_handler_status_t led_os_thread_delete(void *thread_handle)
+{
+    if (thread_handle == NULL)
+    {
+        return LED_HANDLER_ERRORPARAMETER;
+    }
+
+    vTaskDelete((TaskHandle_t)thread_handle);
+    return LED_HANDLER_OK;
+}
+
+led_delete_thread_t led_os_thread_delete_t = {
+    .pf_led_delete_thread = &led_os_thread_delete
+};
+
+led_os_thread_t led_os_thread = {
+    .led_create_thread = &led_os_thread_create_t,
+    .led_delete_thread = &led_os_thread_delete_t
+};
+
+led_handler_status_t led_os_queue_create(void **queue_handle, 
+                                    uint32_t queue_length, 
+                                    uint32_t item_size)
+{
+    if (queue_handle == NULL || queue_length <= 0 || item_size <= 0)
+    {
+        return LED_HANDLER_ERRORPARAMETER;
+    }
+
+    *queue_handle = xQueueCreate(queue_length, item_size);
+    if (*queue_handle != NULL)
+    {
+        return LED_HANDLER_OK;
+    }
+    else
+    {
+        return LED_HANDLER_ERRORNOMEMORY;
+    }
+}
+
+led_create_queue_t led_os_queue_create_t = {
+    .pf_led_create_queue = &led_os_queue_create
+};
+
+led_handler_status_t led_os_queue_delete(void *queue_handle)
+{
+    if (queue_handle == NULL)
+    {
+        return LED_HANDLER_ERRORPARAMETER;
+    }
+
+    vQueueDelete((QueueHandle_t)queue_handle);
+    return LED_HANDLER_OK;
+}
+
+led_delete_queue_t led_os_queue_delete_t = {
+    .pf_led_delete_queue = &led_os_queue_delete
+};
+
+led_handler_status_t led_os_queue_send(void *queue_handle, 
+                                    const void *item, 
+                                    uint32_t timeout)
+{
+    if (queue_handle == NULL || item == NULL)
+    {
+        return LED_HANDLER_ERRORPARAMETER;
+    }
+
+    BaseType_t ret = xQueueSend((QueueHandle_t)queue_handle, item, timeout);
+    if (ret == pdPASS)
+    {
+        return LED_HANDLER_OK;
+    }
+    else
+    {
+        return LED_HANDLER_ERROR;
+    }
+}
+
+led_send_queue_t led_os_queue_send_t = {
+    .pf_led_send_queue = &led_os_queue_send
+};
+
+led_handler_status_t led_os_queue_receive(void *queue_handle, 
+                                       void *item, 
+                                       uint32_t timeout)
+{
+    if (queue_handle == NULL || item == NULL)
+    {
+        return LED_HANDLER_ERRORPARAMETER;
+    }
+
+    BaseType_t ret = xQueueReceive((QueueHandle_t)queue_handle, item, timeout);
+    if (ret == pdPASS)
+    {
+        return LED_HANDLER_OK;
+    }
+    else
+    {
+        return LED_HANDLER_ERROR;
+    }
+}
+
+led_receive_queue_t led_os_queue_receive_t = {
+    .pf_led_receive_queue = &led_os_queue_receive
+};
+
+led_os_queue_t led_os_queue = {
+    .led_create_queue  = &led_os_queue_create_t,
+    .led_delete_queue  = &led_os_queue_delete_t,
+    .led_send_queue    = &led_os_queue_send_t,
+    .led_receive_queue = &led_os_queue_receive_t
+};
+
+void test()
+{
+  static led_handler_t led_handler;
+  led_handler_status_t ret = led_handler_inst(&led_handler,   
+                                              &led_os_delay_ms,
+                                              &led_os_thread,
+                                              &led_os_queue,
+                                              NULL,
+                                              &led_get_time_ms);
+}
+#endif
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -148,14 +300,14 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
-  led_driver_t led1;
-  led_driver_inst(&led1, &led_get_time_ms, &led_operation, &led_os_delay);
+#ifdef TEST_LED
+  test();
+#endif
+
   /* Infinite loop */
   for(;;)
   {
-    printf("helloworld/r/n");
-
-    led1.led_control(&led1, 10, 5, PROPORTIONN_1_1);
+    printf("helloworld\r\n");
     osDelay(1000);
   }
   /* USER CODE END StartDefaultTask */
